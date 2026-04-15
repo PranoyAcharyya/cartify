@@ -14,13 +14,10 @@ async function getProductsFromApi(
   sort: string,
   category: string
 ): Promise<Product[]> {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
   const params = new URLSearchParams();
   if (category !== "all") params.set("category", category);
 
-  const res = await fetch(`${baseUrl}/api/products?${params}`, {
+  const res = await fetch(`/api/products?${params}`, {
     cache: "no-store",
   });
 

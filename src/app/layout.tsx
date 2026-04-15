@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "shopping website",
   ],
   authors: [{ name: "Cartify Team" }],
-  metadataBase: new URL("https://your-domain.com"), // replace with your actual domain
+  metadataBase: new URL("https://your-domain.com"), 
 
   openGraph: {
     title: "Cartify | Smart Online Shopping for Everything You Love",
