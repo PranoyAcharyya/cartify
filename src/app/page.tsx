@@ -7,8 +7,8 @@ import { headers } from "next/headers";
 export const dynamic = "force-dynamic";
 
 const SortDropdown = NextDynamic(() => import("@/components/layout/sortDropdown"), { ssr: true });
-const MainLayout = NextDynamic(() => import("@/components/layout/mainLayout"), { ssr: true });
-const SidebarLayout = NextDynamic(() => import("@/components/layout/sidebarLayout"), { ssr: true });
+const MainLayout = NextDynamic(() => import("@/components/layout/landingLayout"), { ssr: true });
+const SidebarLayout = NextDynamic(() => import("@/components/layout/sidebarComponent"), { ssr: true });
 const ProductCard = NextDynamic(() => import("@/components/productCard"),{ssr:true})
 
 async function getProductsFromApi(

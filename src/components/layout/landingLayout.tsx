@@ -42,7 +42,8 @@ import { X } from 'lucide-react';
         </div>
       </header>
 
-      {/* Backdrop for Mobile Drawer */}
+      {/* Resposnive Drawer */}
+
       {isMobile && showFilter && (
         <div className={styles.backdrop} onClick={() => setShowFilter(false)} />
       )}

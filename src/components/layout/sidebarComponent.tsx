@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import styles from '@/css/sidebarLayout.module.css';
 
-const SidebarLayout: React.FC = () => {
+const SidebarComponent: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -112,4 +112,4 @@ const SidebarLayout: React.FC = () => {
   );
 };
 
-export default SidebarLayout;
+export default SidebarComponent;
