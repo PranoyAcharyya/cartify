@@ -6,9 +6,6 @@ const PAYMENT_METHODS = [
   { src: "https://www.logo.wine/a/logo/Visa_Inc./Visa_Inc.-Logo.wine.svg", alt: "Visa" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg", alt: "Mastercard" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg", alt: "PayPal" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/4/41/Amex_logo_2015.svg", alt: "American Express" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", alt: "Apple Pay" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Pay_Logo.svg", alt: "Google Pay" },
 ];
 
 
