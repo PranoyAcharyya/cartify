@@ -7,7 +7,8 @@ export async function GET(request: Request) {
       ? `https://fakestoreapi.com/products/category/${category}`
       : `https://fakestoreapi.com/products`;
 
-  // USE PROXY (IMPORTANT)
+  // USE PROXY
+  
   const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
 
   const res = await fetch(proxyUrl);

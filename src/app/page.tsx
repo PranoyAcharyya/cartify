@@ -24,7 +24,7 @@ async function getProductsFromApi(
   if (category !== "all") params.set("category", category);
 
   const res = await fetch(`${baseUrl}/api/products?${params}`, {
-    cache: "no-store",
+    next: { revalidate: 60 }
   });
 
   const products: Product[] = await res.json();
