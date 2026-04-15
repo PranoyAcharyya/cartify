@@ -41,6 +41,8 @@ A responsive Product Listing Page built using **Next.js (App Router)** with **Se
 ---
 
 
+
+
 ---
 
 ## ⚙️ Getting Started
@@ -100,6 +102,46 @@ npm run dev
 * Kept **CSS modular and minimal** for better maintainability
 
 ---
+
+## ⚠️ Why Sorting & Filtering May Feel Slow
+
+When a user changes the sorting option or selects a category, the application updates the URL query parameters (e.g. `?sort=price-low`). This triggers a **server-side re-render (SSR)** in Next.js.
+
+### 🔄 What happens under the hood
+
+1. The URL is updated using `router.push()`
+2. Next.js detects the change and re-runs the page on the server
+3. The server fetches fresh product data via an internal API route
+4. The API route calls an external API (via a proxy)
+5. The data is processed (sorted/filtered) on the server
+6. The updated UI is sent back to the client
+
+### ⏱️ Why this introduces delay
+
+* Each interaction triggers a **full request cycle**
+* The app depends on an **external API**, which may be slow
+* A **proxy layer** is used to bypass API restrictions, adding extra latency
+* No aggressive caching is used (`no-store`), ensuring fresh data but increasing response time
+
+### 💡 Why this approach was chosen
+
+* Demonstrates **Server-Side Rendering (SSR)** as required in the assignment
+* Keeps data **consistent and SEO-friendly**
+* Reflects how real-world e-commerce platforms handle filtering via URLs
+
+### 🚀 Possible Optimizations
+
+If this were a production application, performance could be improved by:
+
+* Using **client-side sorting/filtering** after initial fetch
+* Implementing **better caching strategies (ISR)**
+* Reducing dependency on external proxies
+* Adding **loading skeletons** for improved UX
+
+---
+
+> Note: The current implementation prioritizes correctness, SSR behavior, and assignment requirements over client-side speed optimizations.
+
 
 ## 📱 Responsive Design
 
