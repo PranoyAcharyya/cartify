@@ -64,7 +64,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en">
+      <head>
+        <link
+          href="https://db.onlinewebfonts.com/c/ca671f001f1c1ac07ba12ef439e7e65a?family=Simplon+Norm"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Wrapper>{children}</Wrapper>
       </body>
