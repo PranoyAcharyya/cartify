@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     "shopping website",
   ],
   authors: [{ name: "Cartify Team" }],
-  metadataBase: new URL("https://your-domain.com"), 
+  metadataBase: new URL("https://cartify-pi-seven.vercel.app/"), 
 
   openGraph: {
     title: "Cartify | Smart Online Shopping for Everything You Love",
     description:
       "Explore Cartify’s wide range of products including fashion, electronics, and everyday essentials. Shop smarter with great deals and fast delivery.",
-    url: "https://your-domain.com",
+    url: "https://cartify-pi-seven.vercel.app/",
     siteName: "Cartify",
     type: "website",
     locale: "en_IN",
