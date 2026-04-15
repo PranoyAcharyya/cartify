@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import { Product , PageProps} from "@/typescript/interfaces";
 import { Suspense } from "react";
 import NextDynamic from "next/dynamic";
-import { headers } from "next/headers";
+
 
 export const dynamic = "force-dynamic";
 
@@ -15,17 +15,16 @@ async function getProductsFromApi(
   sort: string,
   category: string
 ): Promise<Product[]> {
-  const headersList = await headers();
-  const host = headersList.get("host");
-
-  const baseUrl = `https://${host}`;
 
   const params = new URLSearchParams();
   if (category !== "all") params.set("category", category);
 
-  const res = await fetch(`${baseUrl}/api/products?${params}`, {
+  // KEY FIX → RELATIVE URL
+  const res = await fetch(`https://cartify-pi-seven.vercel.app/api/products?${params}`, {
     cache: "no-store",
   });
+
+  if (!res.ok) return [];
 
   const products: Product[] = await res.json();
 
