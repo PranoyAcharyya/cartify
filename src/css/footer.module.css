@@ -1,0 +1,129 @@
+.footerRoot {
+    background-color: #000;
+    color: #fff;
+    padding: 80px 40px 20px 40px;
+    font-family: 'Inter', sans-serif;
+}
+
+.footerInner {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Top Section */
+.footerTop {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 100px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #fff;
+}
+
+.footerNewsletter h3, .footerContact h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footerNewsletter p {
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.footerInputGroup {
+    display: flex;
+    gap: 15px;
+}
+
+.footerEmailInput {
+    padding: 12px 15px;
+    width: 300px;
+    border: none;
+    font-size: 14px;
+}
+
+.footerSubscribeBtn {
+    background: transparent;
+    border: 1px solid #666;
+    color: #666;
+    padding: 0 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Bottom Section */
+.footerBottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-top: 60px;
+}
+
+.footerColumn h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footerColumn ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footerColumn li {
+    font-size: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+/* Payments */
+.footerPaymentWrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.footerPaymentTitle {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #252020;
+    text-transform: uppercase;
+}
+
+.footerPaymentList {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap; 
+}
+
+.footerPaymentIconBox {
+    position: relative;
+    width: 35px;
+    height: 35px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Copyright */
+.footerCopy {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 80px;
+    color: #888;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .footerTop, .footerBottom {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footerEmailInput {
+        width: 100%;
+    }
+}

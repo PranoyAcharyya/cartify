@@ -1,66 +1,73 @@
-import Image from "next/image";
 import styles from "./page.module.css";
+import { Product , PageProps} from "@/typescript/interfaces";
+import { Suspense } from "react";
+import NextDynamic from "next/dynamic";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+const SortDropdown = NextDynamic(() => import("@/components/layout/sortDropdown"), { ssr: true });
+const MainLayout = NextDynamic(() => import("@/components/layout/mainLayout"), { ssr: true });
+const SidebarLayout = NextDynamic(() => import("@/components/layout/sidebarLayout"), { ssr: true });
+const ProductCard = NextDynamic(() => import("@/components/productCard"),{ssr:true})
+
+async function getProductsFromApi(
+  sort: string,
+  category: string
+): Promise<Product[]> {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+  const params = new URLSearchParams();
+  if (category !== "all") params.set("category", category);
+
+  const res = await fetch(`${baseUrl}/api/products?${params}`, {
+    cache: "no-store",
+  });
+
+  const products: Product[] = await res.json();
+
+  if (sort === "price-low") products.sort((a, b) => a.price - b.price);
+  else if (sort === "price-high") products.sort((a, b) => b.price - a.price);
+  else if (sort === "newest") products.sort((a, b) => b.id - a.id);
+  else if (sort === "popular")
+    products.sort((a, b) => b.rating.rate - a.rating.rate);
+
+  return products;
+}
+
+export default async function Page({ searchParams }: PageProps) {
+   const params = await searchParams;
+
+  const sortValue = params.sort || "recommended";
+  const categoryValue = params.category || "all";
+
+  const products = await getProductsFromApi(sortValue, categoryValue);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className={styles.container}>
+      <section className={styles.heroSection}>
+        <h1 className={styles.heroHeading}>DISCOVER OUR PRODUCTS</h1>
+        <p className={styles.heroDescription}>
+          Lorem ipsum dolor sit amet consectetur.
+        </p>
+      </section>
+
+      <MainLayout
+        itemCount={products.length}
+        sortElement={<SortDropdown defaultValue={sortValue} />}
+        sidebar={
+          <Suspense fallback={<div>Loading filters...</div>}>
+            <SidebarLayout />
+          </Suspense>
+        }
+        productGrid={
+          <>
+            {products.map((product: Product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </>
+        }
+      />
     </div>
   );
 }

@@ -1,0 +1,252 @@
+.navbarRoot {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+.navbarInner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.navbarLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbarMenuBtn {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+}
+
+.navbarLogoText {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    color: #000;
+}
+
+.navbarIcons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #000;
+}
+
+.navbarIconItem {
+    cursor: pointer;
+    display: flex;
+    align: center;
+}
+
+.navbarLang {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Desktop Links */
+.navbarLinks {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    width: 100%;
+    max-width: 636px;
+    margin: 30px auto 0;
+    padding: 10px 0 30px 0;
+}
+
+.navbarLinkItem {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Drawer */
+.navbarDrawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 75%;
+    max-width: 320px;
+    background: #fff;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 32px 32px;
+    gap: 8px;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+}
+
+.navbarDrawerOpen {
+    transform: translateX(0);
+}
+
+.navbarDrawerItem {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.navbarDrawerItem:hover {
+    color: #555;
+}
+
+.navbarDrawerExtras {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.navbarDrawerExtra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Backdrop */
+.navbarBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 199;
+}
+
+.navbarCloseBtn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    z-index: 201;
+}
+
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 100;
+}
+
+.modal {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 320px;
+  max-height: 70vh;
+  background: #fff;
+  z-index: 101;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow-y: auto;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.wishlist{
+    position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .navbarInner {
+        padding: 15px;
+    }
+
+    .navbarMenuBtn {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbarDesktopOnly {
+        display: none;
+    }
+
+    .navbarLinks {
+        display: none;
+    }
+
+    .navbarLogoText {
+        font-size: 20px;
+    }
+
+    .navbarIcons {
+        gap: 12px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) {
+    .navbarDrawer {
+        display: none;
+    }
+
+    .navbarBackdrop {
+        display: none;
+    }
+}
