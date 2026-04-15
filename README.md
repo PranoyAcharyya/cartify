@@ -1,4 +1,4 @@
-# 🛍️ Appscrip Task – Product Listing Page
+# 🛍️ Cartify – Product Listing Page
 
 A responsive Product Listing Page built using **Next.js (App Router)** with **Server-Side Rendering (SSR)**, clean architecture, and minimal dependencies.
 
