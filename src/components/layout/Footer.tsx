@@ -3,7 +3,7 @@ import styles from '@/css/footer.module.css';
 import Image from 'next/image';
 // A data structure to manage your payment methods cleanly
 const PAYMENT_METHODS = [
-  { src: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg", alt: "Visa" },
+  { src: "https://www.logo.wine/a/logo/Visa_Inc./Visa_Inc.-Logo.wine.svg", alt: "Visa" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg", alt: "Mastercard" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg", alt: "PayPal" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/4/41/Amex_logo_2015.svg", alt: "American Express" },
