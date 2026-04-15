@@ -1,28 +1,40 @@
 import styles from "./page.module.css";
-import { Product , PageProps} from "@/typescript/interfaces";
+import { Product, PageProps } from "@/typescript/interfaces";
 import { Suspense } from "react";
 import NextDynamic from "next/dynamic";
 
-
 export const dynamic = "force-dynamic";
 
-const SortDropdown = NextDynamic(() => import("@/components/layout/sortDropdown"), { ssr: true });
-const MainLayout = NextDynamic(() => import("@/components/layout/landingLayout"), { ssr: true });
-const SidebarLayout = NextDynamic(() => import("@/components/layout/sidebarComponent"), { ssr: true });
-const ProductCard = NextDynamic(() => import("@/components/productCard"),{ssr:true})
+const SortDropdown = NextDynamic(
+  () => import("@/components/layout/sortDropdown"),
+  { ssr: true },
+);
+const MainLayout = NextDynamic(
+  () => import("@/components/layout/landingLayout"),
+  { ssr: true },
+);
+const SidebarLayout = NextDynamic(
+  () => import("@/components/layout/sidebarComponent"),
+  { ssr: true },
+);
+const ProductCard = NextDynamic(() => import("@/components/productCard"), {
+  ssr: true,
+});
 
 async function getProductsFromApi(
   sort: string,
-  category: string
+  category: string,
 ): Promise<Product[]> {
-
   const params = new URLSearchParams();
   if (category !== "all") params.set("category", category);
 
   // KEY FIX → RELATIVE URL
-  const res = await fetch(`https://cartify-pi-seven.vercel.app/api/products?${params}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://cartify-pi-seven.vercel.app/api/products?${params}`,
+    {
+      cache: "no-store",
+    },
+  );
 
   if (!res.ok) return [];
 
@@ -38,7 +50,7 @@ async function getProductsFromApi(
 }
 
 export default async function Page({ searchParams }: PageProps) {
-   const params = await searchParams;
+  const params = await searchParams;
 
   const sortValue = params.sort || "recommended";
   const categoryValue = params.category || "all";
@@ -63,11 +75,15 @@ export default async function Page({ searchParams }: PageProps) {
           </Suspense>
         }
         productGrid={
-          <>
-            {products.map((product: Product) => (
+          products.length === 0 ? (
+            <div style={{ padding: "20px" }}>
+              Loading or no products available...
+            </div>
+          ) : (
+            products.map((product: Product) => (
               <ProductCard key={product.id} product={product} />
-            ))}
-          </>
+            ))
+          )
         }
       />
     </div>
